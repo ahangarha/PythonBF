@@ -28,6 +28,11 @@ class TestAhangarha(unittest.TestCase):
         
         code = "++[>++++[>++++++++<-]<-]>>+."
         self.assertEqual(ahangarha.execute(code), 'A')
+        
+        # test for cells value out of the range (0,256)
+        code = "++++[->++++++++<]-[----->>++>++<<<]>>+++++++.>-.+++.<+++++.>-------.+++.<<.>>.+.+++.------.+++++++.-----.<<+."
+        self.assertEqual(ahangarha.execute(code), 'mehrad dehbid!')
+
     
     def test_abnormal_input(self):
         code = 'blah' + '+'*65 + '.' + 'blah'

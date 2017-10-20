@@ -77,12 +77,16 @@ def open_loop():
                 
             else:
                 inloop = False
+    elif cell[pointer]<0:
+        cell[pointer] = cell[pointer] % 256 # so if cell is -3, it will be translated to 253
+    elif cell[pointer]>255:
+        cell[pointer] = cell[pointer] % 256
 
 # closing loop (])
 def close_loop():
     global cell, pointer, i, code
     
-    if cell[pointer]!=0:
+    if cell[pointer] != 0:
 
         inloop = True
         ignore = 0
@@ -100,6 +104,7 @@ def close_loop():
 
             else:
                 inloop = False
+    
 
 def verify_loop(code):
     code = re.sub('[^[\]]', '', code)
